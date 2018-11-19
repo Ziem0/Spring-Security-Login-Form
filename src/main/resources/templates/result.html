@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template :: header"></head>
+<body>
+    <h1>RESULT</h1>
+    <p th:text="|username: ${loginObject.username}|"></p>
+    <p th:text="|password: ${loginObject.password}|"></p>
+</body>
+</html>
