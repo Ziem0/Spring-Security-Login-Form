@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("")
 public class Controller {
 
-	@GetMapping("/all/**")
+	@GetMapping(value = {"/all/**","/"})
 	public String getAll(Model model) {
 		model.addAttribute("title", "all");
 		return "all";
@@ -33,13 +33,15 @@ public class Controller {
 	}
 
 	@GetMapping("/result/**")
-	public String getResult(Model model) {
+	public String getResult(Model model, LoginObject loginObject) {
 		model.addAttribute("title", "result");
+		model.addAttribute(loginObject);
 		return "result";
 	}
 
 	@GetMapping("/login")
 	public String getLogin(Model model, @ModelAttribute LoginObject loginObject, @RequestParam(value = "error",required = false) String messageOrNull) {
+//	public String getLogin(Model model, @RequestParam(value = "error",required = false) String messageOrNull) {
 		model.addAttribute("title", "login");
 		model.addAttribute("message",messageOrNull);
 		return "login";
